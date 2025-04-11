@@ -10,4 +10,4 @@ Este projeto visa coletar dados de preços de DEXs on-chain em tempo real para i
 1. Crie um `.env` com sua chave da Infura.
 2. Instale as dependências:
 
-![Fluxograma](https://github.com/user-attachments/assets/d027c5ea-bf55-4372-8339-5533124665e9)
+![b8af9728-5f51-4a34-8db3-cd5e4a4068b3](https://github.com/user-attachments/assets/cc782cb0-4897-4b57-95b2-eed1b0740239)
