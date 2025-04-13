@@ -2,6 +2,10 @@
 
 import json
 from kafka import KafkaConsumer
+from blockchain_executor.swap_executor import simulate_swap
+
+simulate_swap("UniswapV2", "USDC", "ETH", 100)
+
 
 def main():
     consumer = KafkaConsumer(
