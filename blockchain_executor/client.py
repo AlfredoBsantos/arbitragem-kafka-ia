@@ -1,22 +1,10 @@
-# blockchain_executor/client.py
-
 from web3 import Web3
-from dotenv import load_dotenv
-import os
 
-load_dotenv()
+# RPC do fork do Hardhat
+w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
 
-RPC_URL = os.getenv("RPC_URL")
-PRIVATE_KEY = os.getenv("PRIVATE_KEY")
-PUBLIC_ADDRESS = os.getenv("PUBLIC_ADDRESS")
+# Conta Hardhat fictícia (tem saldo alto por padrão)
+DEFAULT_ACCOUNT = w3.eth.accounts[0]
+w3.eth.default_account = DEFAULT_ACCOUNT
 
-web3 = Web3(Web3.HTTPProvider(RPC_URL))
-
-def get_account():
-    return {
-        "address": PUBLIC_ADDRESS,
-        "private_key": PRIVATE_KEY
-    }
-
-def is_connected():
-    return web3.is_connected()
+print("Conectado:", w3.is_connected())

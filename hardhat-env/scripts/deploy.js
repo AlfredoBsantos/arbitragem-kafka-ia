@@ -1,25 +1,30 @@
-// scripts/deploy.js
 const hre = require("hardhat");
 
 async function main() {
-  const [deployer] = await hre.ethers.getSigners();
+    const [deployer] = await hre.ethers.getSigners();
+    console.log("Usando a conta:", deployer.address);
 
-  console.log("Deploying contracts with the account:", deployer.address);
+    // Deploy do UniswapMock
+    const UniswapMock = await hre.ethers.getContractFactory("UniswapMock");
+    console.log("Implantando UniswapMock...");
+    const uniswap = await UniswapMock.deploy();
+    await uniswap.waitForDeployment();
 
-  const TokenA = await hre.ethers.getContractFactory("TokenA");
-  const tokenA = await TokenA.deploy(ethers.utils.parseEther("1000000"));
-  await tokenA.deployed();
+    const uniswapAddress = await uniswap.getAddress(); // ou uniswap.target
 
-  console.log("TokenA deployed to:", tokenA.address);
+    console.log("UniswapMock implantado em:", uniswapAddress);
 
-  const TokenB = await hre.ethers.getContractFactory("TokenB");
-  const tokenB = await TokenB.deploy(ethers.utils.parseEther("1000000"));
-  await tokenB.deployed();
+    // Deploy do Arbitrage, passando o endereço do UniswapMock
+    const Arbitrage = await hre.ethers.getContractFactory("Arbitrageur");
+    console.log("Implantando Arbitrage...");
+    const arbitrage = await Arbitrage.deploy([uniswapAddress]);
+    await arbitrage.waitForDeployment();
 
-  console.log("TokenB deployed to:", tokenB.address);
+    const arbitrageAddress = await arbitrage.getAddress();
+    console.log("Arbitrage implantado em:", arbitrageAddress);
 }
 
 main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
+    console.error("Erro ao executar o script:", error);
+    process.exitCode = 1;
 });

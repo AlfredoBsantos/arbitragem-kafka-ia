@@ -1,17 +1,23 @@
-# Ignore o ambiente virtual
-venv/
-.env
+# Ignorar diretórios e arquivos do Maven (se aplicável)
+/.idea/
+/.vscode/
+/target/
+/bin/
+/out/
+/venv/
 
-# __pycache__ e outros arquivos temporários
-__pycache__/
-*.py[cod]
-*.log
+# Ignorar dependências do Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+
+# Ignorar dependências do Node.js (se aplicável)
+node_modules/
+
+# Ignorar arquivos de banco de dados SQLite
 *.db
-*.sqlite3
 
-# VSCode config (caso use)
-.vscode/
-
-# Arquivos de sistema
-.DS_Store
-Thumbs.db
+# Ignorar arquivos de configuração específicos
+.env
+*.log
