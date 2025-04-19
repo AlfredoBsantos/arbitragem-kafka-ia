@@ -11,9 +11,9 @@ Este projeto automatiza a identificação e execução de oportunidades de arbit
 ---
 
 ## 🧩 Estrutura do Projeto
-
+```bash
 crypto-arbitrage-project/ │ ├── blockchain_executor/ # Executa arbitragem via contrato inteligente │ └── executor.py │ ├── consumer/ # Consumidor Kafka: escuta e processa dados de preços │ └── price_consumer.py │ ├── contracts/ # Contratos inteligentes (Solidity) │ └── Arbitrage.sol │ ├── hardhat-env/ # Projeto Hardhat para testes de contrato │ └── scripts/ │ └── test/ │ └── hardhat.config.js │ ├── producer/ # Produtor Kafka: envia dados de preço │ └── price_producer.py │ ├── utils/ # Funções auxiliares │ ├── run_all.sh # Script para executar todos os serviços │ ├── .gitignore └── README.md
-
+```
 
 ---
 
@@ -52,7 +52,7 @@ npm install
 #Execultar tudo
 chmod +x run_all.sh
 ./run_all.sh
-
+```
 
 📈 Funcionalidades
 ✅ Publica e consome preços via Kafka
